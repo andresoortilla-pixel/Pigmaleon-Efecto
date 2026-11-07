@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mirada Etnográfica: Detrás de la Pizarra | Grupo 2</title>
+    <!-- Tipografías temáticas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Nunito:wght@400;600;800&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
+    <!-- Ruta al archivo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE NAVEGACIÓN -->
+    <header class="top-bar">
+        <div class="brand">
+            <span class="badge-grupo">GRUPO 2</span>
+            <span class="brand-title">Análisis Psicosocial: <em>Detrás de la Pizarra</em></span>
+        </div>
+        <nav class="step-nav">
+            <button id="nav-step-1" class="nav-btn active" onclick="irAPantalla('intro-screen', 1)">1. Expediente Inicial</button>
+            <button id="nav-step-2" class="nav-btn" onclick="irAPantalla('video-screen', 2)">2. Aula y Video Análisis</button>
+            <button id="nav-step-3" class="nav-btn" onclick="irAPantalla('intervencion-screen', 3)">3. Intervención y APA 7</button>
+        </nav>
+    </header>
+
+    <!-- =================================================================
+         PANTALLA 1: INTRODUCCIÓN INTERACTIVA (EL EXPEDIENTE ESCOLAR)
+         ================================================================= -->
+    <main id="intro-screen" class="screen">
+        <div class="desk-container">
+            <div class="manila-folder">
+                <div class="folder-tab">CONFIDENCIAL - CASO: ESCUELA SIN NOMBRE</div>
+                
+                <div class="folder-header">
+                    <h1>La Mirada Etnográfica: Análisis de Sesgos y Atribuciones</h1>
+                    <p class="subtitle">Revisa los 3 documentos del expediente para desbloquear el análisis audiovisual.</p>
+                </div>
+
+                <!-- Pestañas del expediente -->
+                <div class="folder-tabs-nav">
+                    <button id="tab-btn-1" class="paper-tab active" onclick="leerPestana(1)">
+                        📌 1. Equipo Investigador
+                    </button>
+                    <button id="tab-btn-2" class="paper-tab" onclick="leerPestana(2)">
+                        🏚️ 2. Contexto del Caso
+                    </button>
+                    <button id="tab-btn-3" class="paper-tab" onclick="leerPestana(3)">
+                        🧠 3. Problemática y Sesgos
+                    </button>
+                </div>
+
+                <!-- Hoja de papel interna -->
+                <div class="lined-paper">
+                    <div id="tab-content-area"></div>
+                </div>
+
+                <!-- Barra de progreso y botón para ir al aula -->
+                <div class="folder-footer">
+                    <span id="progreso-lectura" class="stamp-status">Documentos revisados: 1 de 3</span>
+                    <button id="btn-iniciar" class="btn-chalkboard hidden" onclick="iniciarVideo()">
+                        Ingresar al Aula y Reproducir Video ▶
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- =================================================================
+         PANTALLA 2: EL AULA (PIZARRA INTERACTIVA + VIDEO PRINCIPAL LOCAL)
+         ================================================================= -->
+    <section id="video-screen" class="screen hidden">
+        <div class="classroom-wrapper">
+            <div class="chalkboard-frame">
+                <div class="chalkboard-surface">
+                    <h2 class="chalk-title">Analistas de Sesgos y Atribuciones (Efecto Pigmalión)</h2>
+                    <p class="chalk-subtitle">Los apoyos teóricos, clips de evidencia fílmica y capturas se desplegarán automáticamente según el minuto del video.</p>
+                    
+                    <!-- Reproductor de Video Principal Local (assets/video-principal.mp4) -->
+                    <div class="video-container">
+                        <video id="video-principal" controls preload="metadata">
+                            <source id="video-principal-src" src="assets/video-principal.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de video HTML5.
+                        </video>
+                    </div>
+
+                    <!-- Indicador de tiempo y botones manuales de respaldo -->
+                    <div class="chalk-controls">
+                        <div class="time-tracker">
+                            ⏱️ Tiempo del video: <span id="reloj-video">00:00</span>
+                        </div>
+                        <div class="manual-triggers">
+                            <span>Recursos del análisis:</span>
+                            <button class="chalk-btn-small" onclick="mostrarFlashcardSinPausar('flashcard-mead')">Cita Mead</button>
+                            <button class="chalk-btn-small" onclick="mostrarPopUpYPausar('modal-atribucion')">Teoría Ross</button>
+                            <button class="chalk-btn-small" onclick="mostrarClipPelicula('modal-clip-autoridades', 'video-clip-1')">🎬 Clip Directivos</button>
+                            <button class="chalk-btn-small" onclick="mostrarPopUpYPausar('modal-pigmalion')">Teoría Pigmalión</button>
+                            <button class="chalk-btn-small" onclick="mostrarClipPelicula('modal-clip-cambio', 'video-clip-2')">🎬 Clip Maestra</button>
+                            <button class="chalk-btn-small" onclick="mostrarPopUpYPausar('modal-capturas-aula')">🖼️ Antes/Después</button>
+                            <button class="chalk-btn-small highlight" onclick="irAPantalla('intervencion-screen', 3)">Ir a Intervención ➔</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chalk-tray">
+                    <div class="eraser"></div>
+                    <div class="chalk-piece white"></div>
+                    <div class="chalk-piece yellow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         PANTALLA 3: PROPUESTA DE INTERVENCIÓN CON DESBLOQUEO SECUENCIAL
+         ================================================================= -->
+    <section id="intervencion-screen" class="screen hidden">
+        <div class="intervention-container">
+            <div class="chalkboard-header-card">
+                <h2 class="chalk-title">Propuesta de Intervención Psicoeducativa</h2>
+                <p>Programa de Reestructuración de Expectativas Docentes y Fortalecimiento del Autoconcepto</p>
+                <span class="unlock-hint">🔒 Reproduce cada fase en orden para desbloquear la siguiente etapa y la reflexión final.</span>
+            </div>
+
+            <div class="roadmap-grid">
+                
+                <!-- FASE 1 -->
+                <div id="card-fase-1" class="roadmap-card unlocked-card">
+                    <div class="card-header-row">
+                        <div class="step-Pin">FASE 1</div>
+                        <span id="status-fase-1" class="phase-status">🔓 Disponible</span>
+                    </div>
+                    <h3>Deconstrucción de Sesgos Institucionales</h3>
+                    <div class="local-video-box">
+                        <video id="video-fase-1" class="phase-video" controls preload="metadata" onended="desbloquearFase(2)">
+                            <source src="assets/fase1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- FASE 2 -->
+                <div id="card-fase-2" class="roadmap-card locked">
+                    <div id="lock-fase-2" class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <p>Fase Bloqueada</p>
+                        <small>Termina de reproducir el video de la <strong>Fase 1</strong> para habilitar esta sección.</small>
+                    </div>
+                    <div class="card-content-inner">
+                        <div class="card-header-row">
+                            <div class="step-Pin">FASE 2</div>
+                            <span id="status-fase-2" class="phase-status">🔒 Bloqueado</span>
+                        </div>
+                        <h3>Activación del Efecto Pigmalión Positivo</h3>
+                        <div class="local-video-box">
+                            <video id="video-fase-2" class="phase-video" controls preload="metadata" onended="desbloquearFase(3)">
+                                <source src="assets/fase2.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FASE 3 -->
+                <div id="card-fase-3" class="roadmap-card locked">
+                    <div id="lock-fase-3" class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <p>Fase Bloqueada</p>
+                        <small>Termina de reproducir el video de la <strong>Fase 2</strong> para habilitar esta sección.</small>
+                    </div>
+                    <div class="card-content-inner">
+                        <div class="card-header-row">
+                            <div class="step-Pin">FASE 3</div>
+                            <span id="status-fase-3" class="phase-status">🔒 Bloqueado</span>
+                        </div>
+                        <h3>Acompañamiento Socioafectivo</h3>
+                        <div class="local-video-box">
+                            <video id="video-fase-3" class="phase-video" controls preload="metadata" onended="desbloquearReflexion()">
+                                <source src="assets/fase3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- REFLEXIÓN Y APA 7 -->
+            <div id="box-reflexion" class="closing-box locked">
+                <div id="lock-reflexion" class="lock-overlay reflection-lock">
+                    <div class="lock-icon">🔒</div>
+                    <p>Reflexión Final Bloqueada</p>
+                    <small>Completa la reproducción de las <strong>3 Fases de Intervención</strong> para desbloquear la reflexión del psicólogo educativo y las referencias APA 7.</small>
+                </div>
+
+                <div class="closing-content-inner">
+                    <div class="rol-psicologo">
+                        <h3>🎓 Reflexión: El Rol del Psicólogo Educativo</h3>
+                        <p>Frente a contextos de alta vulnerabilidad, el psicólogo educativo no debe limitarse al diagnóstico individual del niño, sino intervenir sistémicamente sobre las creencias institucionales. Cuando cambiamos la mirada del adulto sobre el estudiante, transformamos su destino educativo.</p>
+                    </div>
+                    <div class="apa-trigger-box">
+                        <button class="btn-apa" onclick="abrirModalAPA()">📚 Ver Referencias Bibliográficas (APA 7.ª Ed.)</button>
+                        <button class="btn-volver-video" onclick="irAPantalla('video-screen', 2)">⬅ Volver al Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================
+         APOYOS VISUALES, CLIPS Y CAPTURAS SINCRONIZADOS CON EL GUION
+         ================================================================= -->
+
+    <!-- APOYO MIEMBRO 1: FLASHCARD MEAD (No pausa el video) -->
+    <div id="flashcard-mead" class="sticky-flashcard hidden">
+        <div class="pin-icon">📌</div>
+        <button class="close-sticky" onclick="ocultarElemento('flashcard-mead')">✖</button>
+        <h4>George H. Mead (1934)</h4>
+        <p><strong>Interaccionismo Simbólico:</strong> El autoconcepto del niño se construye como un espejo de cómo lo miran y etiquetan los adultos de su entorno escolar.</p>
+    </div>
+
+    <!-- APOYO MIEMBRO 2: MODAL TEÓRICO LEE ROSS (Pausa el video) -->
+    <div id="modal-atribucion" class="modal-overlay hidden">
+        <div class="notebook-modal">
+            <span class="modal-tag"> • LENTE TEÓRICA (LEE ROSS, 1977)</span>
+            <h2>El Error Fundamental de Atribución</h2>
+            <p>Tendencia cognitiva a culpar a las características internas del niño por su bajo rendimiento, ignorando el peso de la situación extrema en la que vive.</p>
+            <div class="comparison-grid">
+                <div class="comp-box bad">
+                    <h4>❌ Atribución Interna (Prejuicio)</h4>
+                    <p><em>"Son vagos, indisciplinados, vienen de la calle y no les importa estudiar."</em></p>
+                </div>
+                <div class="comp-box good">
+                    <h4>✅ Factores Situacionales (Realidad)</h4>
+                    <p>Aula improvisada junto a las vías del tren, ruido constante, hambre y abandono institucional.</p>
+                </div>
+            </div>
+            <button class="btn-resume" onclick="cerrarModalYReanudar('modal-atribucion')">
+                Continuar con la exposición ▶
+            </button>
+        </div>
+    </div>
+
+    <!-- APOYO MIEMBRO 3: CLIP DE PELÍCULA 1 - AUTORIDADES (Pausa el video principal y reproduce el clip) -->
+    <div id="modal-clip-autoridades" class="modal-overlay hidden">
+        <div class="notebook-modal film-modal">
+            <span class="modal-tag film-tag">🎬 MIEMBRO 3 • EVIDENCIA FÍLMICA 1</span>
+            <h2>Escena: Estigmatización y Prejuicios Institucionales</h2>
+            <p>Observa cómo los directivos justifican el abandono escolar responsabilizando a las familias del refugio:</p>
+            
+            <div class="clip-player-wrapper">
+                <video id="video-clip-1" controls preload="metadata" onended="cerrarClipYReanudar('modal-clip-autoridades', 'video-clip-1')">
+                    <source src="assets/escena-autoridades.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+            <small class="clip-note">💡 Al terminar este fragmento de la película, el análisis se reanudará automáticamente.</small>
+
+            <button class="btn-resume" onclick="cerrarClipYReanudar('modal-clip-autoridades', 'video-clip-1')">
+                Cerrar escena y continuar con el análisis ▶
+            </button>
+        </div>
+    </div>
+
+    <!-- APOYO MIEMBRO 4: MODAL TEÓRICO ROSENTHAL Y JACOBSON (Pausa el video) -->
+    <div id="modal-pigmalion" class="modal-overlay hidden">
+        <div class="notebook-modal">
+            <span class="modal-tag">MIEMBRO 4 • ROSENTHAL Y JACOBSON (1968)</span>
+            <h2>El Efecto Pigmalión (Profecía Autocumplida)</h2>
+            <p>Las expectativas del docente moldean el rendimiento real de los estudiantes a través de 4 factores:</p>
+            <div class="cycle-steps">
+                <div class="cycle-item"><strong>1. Clima socioemocional:</strong> Trato cálido, empático y respetuoso hacia el alumno y su familia.</div>
+                <div class="cycle-item"><strong>2. Input (Insumo):</strong> Enseñar más contenido porque se cree que el niño sí puede aprenderlo.</div>
+                <div class="cycle-item"><strong>3. Oportunidad de respuesta:</strong> Darles participación activa y paciencia en el aula.</div>
+                <div class="cycle-item"><strong>4. Feedback (Retroalimentación):</strong> Elogiar el esfuerzo y corregir con afecto pedagógico.</div>
+            </div>
+            <button class="btn-resume" onclick="cerrarModalYReanudar('modal-pigmalion')">
+                Continuar con la exposición ▶
+            </button>
+        </div>
+    </div>
+
+    <!-- APOYO MIEMBRO 5 (PARTE A): CLIP DE PELÍCULA 2 - CAMBIO DE ACTITUD (Pausa el video principal) -->
+    <div id="modal-clip-cambio" class="modal-overlay hidden">
+        <div class="notebook-modal film-modal">
+            <span class="modal-tag film-tag">🎬 MIEMBRO 5 • EVIDENCIA FÍLMICA 2</span>
+            <h2>Escena: Dignificación del Aula y Cambio de Actitud</h2>
+            <p>La maestra Stacey Bess rompe las etiquetas negativas limpiando el salón e infundiendo altas expectativas:</p>
+            
+            <div class="clip-player-wrapper">
+                <video id="video-clip-2" controls preload="metadata" onended="cerrarClipYReanudar('modal-clip-cambio', 'video-clip-2')">
+                    <source src="assets/escena-cambio.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+            <small class="clip-note">💡 Al terminar este fragmento de la película, el análisis se reanudará automáticamente.</small>
+
+            <button class="btn-resume" onclick="cerrarClipYReanudar('modal-clip-cambio', 'video-clip-2')">
+                Cerrar escena y continuar con el análisis ▶
+            </button>
+        </div>
+    </div>
+
+    <!-- APOYO MIEMBRO 5 (PARTE B): FLASHCARD BANDURA (No pausa el video) -->
+    <div id="flashcard-bandura" class="sticky-flashcard hidden">
+        <div class="pin-icon">📌</div>
+        <button class="close-sticky" onclick="ocultarElemento('flashcard-bandura')">✖</button>
+        <h4>Albert Bandura (1987)</h4>
+        <p><strong>Autoeficacia:</strong> Al recibir un trato digno y expectativas altas, los niños empiezan a creer en su propia capacidad para aprender y superarse.</p>
+    </div>
+
+    <!-- APOYO MIEMBRO 6: CAPTURAS COMPARATIVAS ANTES Y DESPUÉS (Pausa el video) -->
+    <div id="modal-capturas-aula" class="modal-overlay hidden">
+        <div class="notebook-modal">
+            <span class="modal-tag">🖼️ MIEMBRO 6 • IMPACTO DEL ENTORNO FÍSICO</span>
+            <h2>Comparativa Visual: Del Abandono a la Dignificación</h2>
+            <p>El espacio físico envía un mensaje psicológico directo sobre el valor que la institución le da al estudiante:</p>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-card bad-env">
+                    <h4>🏚️ ANTES: Abandono Institucional</h4>
+                    <div class="img-frame">
+                        <!-- RUTA DE LA CAPTURA 1 (.jpeg) -->
+                        <img src="assets/aula-antes.jpeg" alt="Aula improvisada antes de la intervención" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="img-placeholder">Coloca aquí:<br><strong>assets/aula-antes.jpeg</strong></div>
+                    </div>
+                    <p>Desorden, falta de pupitres, suciedad y ruido del tren (Mensaje: <em>"No importas"</em>).</p>
+                </div>
+
+                <div class="screenshot-card good-env">
+                    <h4>🏫 DESPUÉS: Reparación Psicológica</h4>
+                    <div class="img-frame">
+                        <!-- RUTA DE LA CAPTURA 2 (.jpeg) -->
+                        <img src="assets/aula-despues.jpeg" alt="Aula limpia y dignificada por la maestra" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="img-placeholder">Coloca aquí:<br><strong>assets/aula-despues.jpeg</strong></div>
+                    </div>
+                    <p>Paredes pintadas, libros propios, orden y calidez (Mensaje: <em>"Eres valioso y capaz"</em>).</p>
+                </div>
+            </div>
+
+            <button class="btn-resume" onclick="cerrarModalYReanudar('modal-capturas-aula')">
+                Continuar hacia el cierre del análisis ▶
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL REFERENCIAS APA 7 -->
+    <div id="modal-apa" class="modal-overlay hidden">
+        <div class="notebook-modal apa-modal">
+            <h2>Referencias Bibliográficas (Normas APA 7.ª Edición)</h2>
+            <div class="apa-list">
+                <p class="apa-item">Bandura, A. (1987). <em>Pensamiento y acción: Fundamentos sociales</em>. Martínez Roca.</p>
+                <p class="apa-item">Bleckner, J. (Director). (2011). <em>Beyond the Blackboard</em> [Detrás de la pizarra] [Película]. Hallmark Hall of Fame Productions.</p>
+                <p class="apa-item">Mead, G. H. (1934). <em>Mind, self, and society: From the standpoint of a social behaviorist</em>. University of Chicago Press.</p>
+                <p class="apa-item">Rosenthal, R., & Jacobson, L. (1968). <em>Pygmalion in the classroom: Teacher expectation and pupils' intellectual development</em>. Holt, Rinehart & Winston.</p>
+                <p class="apa-item">Ross, L. (1977). The intuitive psychologist and his shortcomings: Distortions in the attribution process. En L. Berkowitz (Ed.), <em>Advances in experimental social psychology</em> (Vol. 10, pp. 173–220). Academic Press.</p>
+            </div>
+            <button class="btn-resume" onclick="ocultarElemento('modal-apa')">Cerrar Referencias</button>
+        </div>
+    </div>
+
+    <!-- Ruta al archivo JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+detras-de-la-pizarra/
+│
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── app.js
+└── assets/
+    │  --- VIDEOS DEL EXPEDIENTE INICIAL (PANTALLA 1) ---
+    ├── contexto.mp4             <-- Video corto Pestaña 2
+    ├── problematica.mp4         <-- Video corto Pestaña 3
+    │
+    │  --- EVIDENCIA FÍLMICA QUE SALTA EN EL VIDEO CENTRAL (PANTALLA 2) ---
+    ├── escena-autoridades.mp4   <-- Clip de película (Miembro 3: directivos / prejuicios)
+    ├── escena-cambio.mp4        <-- Clip de película (Miembro 5: maestra limpiando / enseñando)
+    ├── aula-antes.jpg           <-- Captura de pantalla del aula sucia/abandonada (Miembro 6)
+    ├── aula-despues.jpg         <-- Captura de pantalla del aula limpia/arreglada (Miembro 6)
+    │
+    │  --- VIDEOS DE PROPUESTA DE INTERVENCIÓN (PANTALLA 3) ---
+    ├── fase1.mp4                <-- Video corto Fase 1
+    ├── fase2.mp4                <-- Video corto Fase 2
+    └── fase3.mp4                <-- Video corto Fase 3
