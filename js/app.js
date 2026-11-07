@@ -34,7 +34,7 @@ const eventosDelVideo = [
     {
         // APOYO MIEMBRO 4: Pausa el video y muestra el esquema de Rosenthal y Jacobson (1968)
         nombre: "Miembro 4 - Esquema Efecto Pigmalión",
-        segundoExacto: 178, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 4:00)
+        segundoExacto: 182, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 4:00)
         mostrado: false,
         accion: () => mostrarPopUpYPausar('modal-pigmalion')
     },
