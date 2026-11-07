@@ -41,7 +41,7 @@ const eventosDelVideo = [
     {
         // APOYO MIEMBRO 5 (Parte A): Pausa el video principal y reproduce el Clip 2 (assets/escena-cambio.mp4)
         nombre: "Miembro 5 - Clip Película: Maestra limpia el aula",
-        segundoExacto: 1000, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 5:10)
+        segundoExacto: 283, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 5:10)
         mostrado: false,
         accion: () => mostrarClipPelicula('modal-clip-cambio', 'video-clip-2')
     },
