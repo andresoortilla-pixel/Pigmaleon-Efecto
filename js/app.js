@@ -34,14 +34,14 @@ const eventosDelVideo = [
     {
         // APOYO MIEMBRO 4: Pausa el video y muestra el esquema de Rosenthal y Jacobson (1968)
         nombre: "Miembro 4 - Esquema Efecto Pigmalión",
-        segundoExacto: 184, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 4:00)
+        segundoExacto: 183, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 4:00)
         mostrado: false,
         accion: () => mostrarPopUpYPausar('modal-pigmalion')
     },
     {
         // APOYO MIEMBRO 5 (Parte A): Pausa el video principal y reproduce el Clip 2 (assets/escena-cambio.mp4)
         nombre: "Miembro 5 - Clip Película: Maestra limpia el aula",
-        segundoExacto: 283, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 5:10)
+        segundoExacto: 165, // <-- CAMBIA AQUÍ EL SEGUNDO (Ej: 5:10)
         mostrado: false,
         accion: () => mostrarClipPelicula('modal-clip-cambio', 'video-clip-2')
     },
